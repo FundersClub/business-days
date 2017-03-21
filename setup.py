@@ -8,6 +8,8 @@ setup(
     name='business_days',
     version='0.0.1',
     packages=find_packages(),
+    test_suite='nose.collector',
+    tests_require=['nose'],
     license='Apache License 2.0',
     description='A tiny little library for handling business days with dates',
     url='https://www.github.com/FundersClub/business_days',
