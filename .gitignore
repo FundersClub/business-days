@@ -1,0 +1,9 @@
+#*
+.DS_Store
+*.pyc
+*.swn
+*.swo
+*.swp
+.projectile
+\#*#
+*~
