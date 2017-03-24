@@ -7,3 +7,5 @@
 .projectile
 \#*#
 *~
+.eggs/
+business_days.egg-info/

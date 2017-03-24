@@ -29,7 +29,9 @@ def is_business_day(day):
     Whether the specified day is considered a "working day", i.e. not a weekend
     or a holiday.
     """
-    return not (day.weekday() in WEEKENDS or day.strftime('%Y-%m-%d') in HOLIDAYS)
+    return not (
+        day.weekday() in WEEKENDS or day.strftime('%Y-%m-%d') in HOLIDAYS
+    )
 
 
 def days_from_now(from_date, days=0):
@@ -71,26 +73,51 @@ def business_timediff(from_datetime, to_datetime):
     biz_open, biz_close = 9, 17  # 9:00am - 5:00pm
 
     while from_datetime < to_datetime:
-        # If current date is not a business day or after business hours, move to the next day but adjust the time to when the business actually opens
-        if not is_business_day(from_datetime) or from_datetime > from_datetime.replace(hour=biz_close, minute=0, second=0, microsecond=0):
-            from_datetime = days_from_now(from_datetime, 1).replace(hour=biz_open, minute=0, second=0, microsecond=0)
+        # If current date is not a business day or after business hours, move
+        # to the next day but adjust the time to when the business actually
+        # opens
+        if not is_business_day(from_datetime) or (
+            from_datetime > from_datetime.replace(
+                hour=biz_close,
+                minute=0,
+                second=0,
+                microsecond=0,
+            )
+        ):
+            from_datetime = days_from_now(from_datetime, 1).replace(
+                hour=biz_open,
+                minute=0,
+                second=0,
+                microsecond=0,
+            )
             continue
 
-        # Figure out when the current day starts - either when the business opens,
-        # or at from_datetime if that's after the business opened
+        # Figure out when the current day starts - either when the business
+        # opens, or at from_datetime if that's after the business opened
         day_start = max(
             from_datetime,
-            from_datetime.replace(hour=biz_open, minute=0, second=0, microsecond=0),
+            from_datetime.replace(
+                hour=biz_open,
+                minute=0,
+                second=0,
+                microsecond=0,
+            ),
         )
 
-        # Figure out when the current day ends - either when the business closes
-        # or when we reach to_datetime
+        # Figure out when the current day ends - either when the business
+        # closes or when we reach to_datetime
         day_end = min(
             to_datetime,
-            from_datetime.replace(hour=biz_close, minute=0, second=0, microsecond=0),
+            from_datetime.replace(
+                hour=biz_close,
+                minute=0,
+                second=0,
+                microsecond=0,
+            ),
         )
 
-        # If the day ends before it began, no hours were during business hours and we're done
+        # If the day ends before it began, no hours were during business hours
+        # and we're done
         if day_end < day_start:
             break
 
@@ -98,7 +125,10 @@ def business_timediff(from_datetime, to_datetime):
         diff += (day_end - day_start)
 
         # Move to next business day
-        from_datetime = days_from_now(from_datetime, 1).replace(hour=biz_open, minute=0, second=0, microsecond=0)
+        from_datetime = days_from_now(
+            from_datetime,
+            1,
+        ).replace(hour=biz_open, minute=0, second=0, microsecond=0)
 
     # Done
     return diff
