@@ -102,3 +102,13 @@ def business_timediff(from_datetime, to_datetime):
 
     # Done
     return diff
+
+
+def previous_day(from_date):
+    """Get the business day immediately preceding the provided date."""
+    day_to_test = from_date - timedelta(days=1)
+
+    while not is_business_day(day_to_test):
+        day_to_test -= timedelta(days=1)
+
+    return day_to_test
