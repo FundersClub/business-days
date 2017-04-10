@@ -1,4 +1,4 @@
-# business_days
+# business-days
 
 This is just a handful of functions that make working with business days easier.
 
