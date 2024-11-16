@@ -7,7 +7,8 @@ from setuptools import (
 setup(
     name='business_days',
     version='0.0.1',
-    packages=find_packages(),
+    package_dir={"": "business_days"},
+    packages=find_packages(where="business_days"),
     test_suite='nose.collector',
     tests_require=['nose'],
     license='Apache License 2.0',
