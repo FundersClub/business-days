@@ -6,7 +6,7 @@ from setuptools import (
 
 setup(
     name='business_days',
-    version='0.0.1',
+    version='0.0.5',
     package_dir={"": "business_days"},
     packages=find_packages(where="business_days"),
     test_suite='nose.collector',
