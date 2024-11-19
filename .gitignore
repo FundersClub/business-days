@@ -9,3 +9,5 @@
 *~
 .eggs/
 business_days.egg-info/
+dist/
+build/
