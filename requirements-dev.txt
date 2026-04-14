@@ -1,0 +1,3 @@
+# Local dev / lock source for this package (see scripts/deps.sh at repo root).
+-e .
+nose
