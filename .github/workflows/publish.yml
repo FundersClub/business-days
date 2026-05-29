@@ -1,0 +1,38 @@
+name: Publish to PyPI
+
+# Publishes to PyPI when a GitHub Release is published. Tag releases as
+# v0.x.y to match the project's existing convention.
+#
+# Authentication uses PyPI Trusted Publishing (OIDC) — no API token is stored.
+# One-time setup on PyPI: add a "pending publisher" for project `business-days`
+# with owner `FundersClub`, repository `business-days`, and workflow
+# `publish.yml`. See: https://docs.pypi.org/trusted-publishers/
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e .
+      - run: python -m unittest discover -s tests -v
+
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --upgrade build
+      - run: python -m build
+      - uses: pypa/gh-action-pypi-publish@release/v1

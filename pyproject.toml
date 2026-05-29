@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=77.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "business-days"
+version = "0.0.7"
+description = "A tiny little library for handling business days with dates"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "FundersClub" }]
+keywords = ["business-days", "workdays", "dates", "holidays", "datetime"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/FundersClub/business-days"
+Repository = "https://github.com/FundersClub/business-days"
+Issues = "https://github.com/FundersClub/business-days/issues"
+
+[tool.setuptools]
+packages = ["business_days"]

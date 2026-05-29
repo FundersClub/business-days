@@ -51,7 +51,7 @@ class BusinessDaysTests(TestCase):
         self.assertEqual(days_from_now(from_day, 4), date(2015, 12, 29))
         self.assertEqual(days_from_now(from_day, 5), date(2015, 12, 30))
         self.assertEqual(days_from_now(from_day, 6), date(2015, 12, 31))
-        self.assertEqual(days_from_now(from_day, 7), date(2016, 01, 04))
+        self.assertEqual(days_from_now(from_day, 7), date(2016, 1, 4))
 
     def test_business_timediff(self):
         hour = 3600
