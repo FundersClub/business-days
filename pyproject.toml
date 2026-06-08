@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "business-days"
-version = "0.0.7"
+version = "0.0.8"
 description = "A tiny little library for handling business days with dates"
 readme = "README.md"
 requires-python = ">=3.8"
