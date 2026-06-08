@@ -26,5 +26,13 @@ assertEqual(8 * 3600, business_days.business_timediff(
 
 [See the tests for more examples](https://github.com/FundersClub/business-days/blob/master/tests/test_business_days.py).
 
-*Note about developing this:* If you are going to release a new version, don't forget to tag the release as v0.x.y (or whatever) so that it's easy to refer to specific versions from `requirements.txt` files.
+## Releasing
+
+Releases are published to PyPI automatically by GitHub Actions:
+
+1. Bump the `version` in `pyproject.toml`.
+2. Commit and push to `master`.
+3. [Draft a new GitHub Release](https://github.com/FundersClub/business-days/releases/new) with a tag matching that version (e.g. `v0.1.0`).
+
+Publishing the release runs the tests and uploads the build to PyPI — no tokens or manual `twine` steps needed.
 
